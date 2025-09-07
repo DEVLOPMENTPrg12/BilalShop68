@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./footer";
+import HeroSection from "./hero";
+import Navbar from "./nav";
+import SubscribeSection from "./Newsletter";
+import ProductList from "./product";
+import CartPage from "./CartPage"; // خصك تصايب هاد الصفحة أو placeholder
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+    <Navbar />
+      <HeroSection />
+
+      <Routes>
+        <Route path="/" element={<ProductList />} />
+        <Route path="/cart" element={<CartPage />} />
+      </Routes>
+
+      <SubscribeSection />
+      <Footer /></div>
   );
 }
-
-export default App;
