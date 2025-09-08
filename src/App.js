@@ -1,24 +1,33 @@
-// App.js
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Footer from "./footer";
-import HeroSection from "./hero";
-import Navbar from "./nav";
-import SubscribeSection from "./Newsletter";
-import ProductList from "./product";
-import CartPage from "./CartPage"; // خصك تصايب هاد الصفحة أو placeholder
+import { Routes, Route } from "react-router-dom";
+import MainLayout from "./MainLayout";
+import CheckoutLayout from "./CheckoutLayout";
+import CheckoutPage from "./CheckoutPage";
+import Home from "./Home";
 
-export default function App() {
+function App() {
   return (
-    <div>
-    <Navbar />
-      <HeroSection />
+    <Routes>
+      {/* الصفحات العادية */}
+      <Route
+        path="/"
+        element={
+          <MainLayout>
+            <Home/>
+          </MainLayout>
+        }
+      />
 
-      <Routes>
-        <Route path="/" element={<ProductList />} />
-        <Route path="/cart" element={<CartPage />} />
-      </Routes>
-
-      <SubscribeSection />
-      <Footer /></div>
+      {/* صفحة checkout */}
+      <Route
+        path="/checkout"
+        element={
+          <CheckoutLayout>
+            <CheckoutPage />
+          </CheckoutLayout>
+        }
+      />
+    </Routes>
   );
 }
+
+export default App;
